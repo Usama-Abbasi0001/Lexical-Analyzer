@@ -43,7 +43,7 @@ function LexicalAnalyzer() {
       <span className="text-[20px] font-bold">M.Usama Abbasi </span>
       <span className="text-[18px] font-bold">2K22 CS-44</span>
       <textarea
-        className="w-96 h-[500px] p-2 border border-gray-700 bg-gray-800 rounded-md"
+        className="md:w-96 w-[350px] h-[500px] p-2 border  mt-5 border-gray-700 bg-gray-800 rounded-md"
         value={input}
         onChange={(e) => setInput(e.target.value)}
       />
@@ -53,7 +53,7 @@ function LexicalAnalyzer() {
       >
         Analyze
       </button>
-      <div className="mt-4 w-96">
+      <div className="mt-4 md:w-96 w-[350px] ">
         <h2 className="text-xl font-semibold">Tokens:</h2>
         <div className="bg-gray-800 p-4 rounded-md mt-2">
           {tokens.length > 0 ? (
