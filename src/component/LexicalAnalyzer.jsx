@@ -30,7 +30,7 @@ const tokenize = (input) => {
 };
 
 function LexicalAnalyzer() {
-  const [input, setInput] = useState("int a = 5;\nfloat b = 10.5;");
+  const [input, setInput] = useState("char a = Dekha La Bhaii;\nfloat b = 10.5;");
   const [tokens, setTokens] = useState([]);
 
   const handleAnalyze = () => {
