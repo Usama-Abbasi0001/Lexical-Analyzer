@@ -12,17 +12,21 @@ const tokenize = (input) => {
     const words = line.match(/\w+|\S/g) || [];
 
     words.forEach((word) => {
-      let type = "Identifier";
+      let lexemeClass = "";
+
       if (KEYWORDS.includes(word)) {
-        type = "Keyword";
+        lexemeClass = "Reserved Word";
       } else if (OPERATORS.includes(word)) {
-        type = "Operator";
+        lexemeClass = "Arithmetic/Relational";
       } else if (SEPARATORS.includes(word)) {
-        type = "Separator";
+        lexemeClass = "Punctuation";
       } else if (!isNaN(word)) {
-        type = "Number";
+        lexemeClass = "Constant";
+      } else {
+        lexemeClass = "Identifier";
       }
-      tokens.push({ line: lineNumber + 1, type, value: word });
+
+      tokens.push({ line: lineNumber + 1, lexemeClass, value: word });
     });
   });
 
@@ -61,7 +65,7 @@ function LexicalAnalyzer() {
               <thead>
                 <tr>
                   <th className="border border-gray-600 p-2">Line</th>
-                  <th className="border border-gray-600 p-2">Type</th>
+                  <th className="border border-gray-600 p-2">Lexeme Class</th>
                   <th className="border border-gray-600 p-2">Value</th>
                 </tr>
               </thead>
@@ -69,7 +73,7 @@ function LexicalAnalyzer() {
                 {tokens.map((token, index) => (
                   <tr key={index}>
                     <td className="border border-gray-600 p-2">{token.line}</td>
-                    <td className="border border-gray-600 p-2">{token.type}</td>
+                    <td className="border border-gray-600 p-2">{token.lexemeClass}</td>
                     <td className="border border-gray-600 p-2">{token.value}</td>
                   </tr>
                 ))}
